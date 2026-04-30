@@ -21,7 +21,7 @@ class User {
         Username: {$validator->validateUsername($this->username)} <br>
         Email: {$validator->validateEmail($this->email)} <br>
         Password: {$validator->validatePassword($this->password)} <br>
-        ----------------------<br>
+      
         ";
     }
 }
