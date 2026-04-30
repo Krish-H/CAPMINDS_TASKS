@@ -15,8 +15,14 @@ class User {
         $this->password = $user_password;
     }
 
-    public function displayUser() {
-        return "User: {$this->username}, Email: {$this->email}";
+    public function displayUser($validator) {
+        return "
+        <b>User:</b> {$this->username} <br>
+        Username: {$validator->validateUsername($this->username)} <br>
+        Email: {$validator->validateEmail($this->email)} <br>
+        Password: {$validator->validatePassword($this->password)} <br>
+        ----------------------<br>
+        ";
     }
 }
 
