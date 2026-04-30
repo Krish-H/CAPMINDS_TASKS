@@ -31,5 +31,5 @@ foreach ($user_data as $data) {
     $user = new User($data['username'], $data['email'], $data['password']);
     echo $user->displayUser($validator);
     
-
+    Line();
 }
