@@ -29,11 +29,7 @@ $validator = new UserValidator();
 foreach ($user_data as $data) {
 
     $user = new User($data['username'], $data['email'], $data['password']);
+    echo $user->displayUser($validator);
+    
 
-    echo "<b>User:</b> " . $user->username . "<br>";
-    echo "Username: " . $validator->validateUsername($user->username) . "<br>";
-    echo "Email: " . $validator->validateEmail($user->email) . "<br>";
-    echo "Password: " . $validator->validatePassword($user->password) . "<br>";
-
-    Line();
 }
