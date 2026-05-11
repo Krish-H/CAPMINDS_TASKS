@@ -353,21 +353,19 @@ $result = $stmt->get_result();
 
                                     <div class="d-flex justify-content-center gap-2">
 
-                                        <a href="edit.php?id=<?php echo $row['id']; ?>"
-                                           class="btn btn-light border px-3 fw-semibold">
+                                        <form method="POST" action="edit.php" class="m-0">
+                                            <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                            <button type="submit" class="btn btn-light border px-3 fw-semibold">
+                                                ✏ Edit
+                                            </button>
+                                        </form>
 
-                                            ✏ Edit
-
-                                        </a>
-
-                                        <a href="delete.php?id=<?php echo $row['id']; ?>"
-                                           class="btn btn-danger px-3 fw-semibold"
-
-                                           onclick="return confirm('Are you sure you want to delete <?php echo htmlspecialchars(addslashes($row['patient_name'])); ?>?');">
-
-                                            Delete
-
-                                        </a>
+                                        <form method="POST" action="delete.php" class="m-0" onsubmit="return confirm('Are you sure you want to delete <?php echo htmlspecialchars(addslashes($row['patient_name'])); ?>?');">
+                                            <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                            <button type="submit" class="btn btn-danger px-3 fw-semibold">
+                                                Delete
+                                            </button>
+                                        </form>
 
                                     </div>
 
