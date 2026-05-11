@@ -4,12 +4,12 @@ require_once '../config/db.php';
 $errors = [];
 $success = '';
 
-if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+if (!isset($_REQUEST['id']) || !is_numeric($_REQUEST['id'])) {
     header("Location: list.php");
     exit;
 }
 
-$id = $_GET['id'];
+$id = $_REQUEST['id'];
 
 // Fetch existing patient data
 $stmt = $conn->prepare("SELECT * FROM patients WHERE id = ?");
@@ -25,7 +25,7 @@ if ($result->num_rows === 0) {
 $patient = $result->fetch_assoc();
 $stmt->close();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['patient_name'])) {
     $name = trim($_POST['patient_name']);
     $email = trim($_POST['email']);
     $phone = trim($_POST['phone']);
@@ -103,7 +103,8 @@ include '../includes/header.php';
             <div class="alert alert-success"><?php echo htmlspecialchars($success); ?></div>
         <?php endif; ?>
 
-        <form action="edit.php?id=<?php echo $id; ?>" method="POST" class="form-container">
+        <form action="edit.php" method="POST" class="form-container">
+            <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
             <div class="mb-3">
                 <label for="patient_name" class="form-label fw-bold">Patient Name</label>
                 <input type="text" class="form-control" id="patient_name" name="patient_name" value="<?php echo htmlspecialchars($patient['patient_name']); ?>" required>
