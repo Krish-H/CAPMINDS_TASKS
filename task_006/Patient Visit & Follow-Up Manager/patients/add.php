@@ -17,10 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($dob)) $errors[] = "Date of Birth is required.";
     if (empty($join_date)) $errors[] = "Join Date is required.";
 
-    // Advanced Validation handled by SQL directly if we want to be strict, 
-    // but PHP form validation for 'not future' DOB is done via logic or just rely on SQL if possible.
-    // The prompt says "DOB must be real and not future", "Join date required".
-    // We will do a simple check.
+
     if (!empty($dob) && strtotime($dob) > time()) {
         $errors[] = "Date of Birth cannot be in the future.";
     }
