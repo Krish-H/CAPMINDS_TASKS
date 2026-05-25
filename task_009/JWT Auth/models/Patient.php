@@ -12,7 +12,7 @@ class Patient
 
     public function getAll()
     {
-        $query = "SELECT * FROM " . $this->table . " ORDER BY created_at DESC";
+        $query = "SELECT id,name,age,gender,phone,address FROM " . $this->table . " ORDER BY created_at DESC";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll();
@@ -20,7 +20,7 @@ class Patient
 
     public function findById($id)
     {
-        $query = "SELECT * FROM " . $this->table . " WHERE id = :id LIMIT 1";
+        $query = "SELECT id,name,age,gender,phone,address FROM " . $this->table . " WHERE id = :id LIMIT 1";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
