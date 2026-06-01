@@ -68,7 +68,7 @@ http://localhost/JWT Auth/public/index.php
 
 #### Login User
 - **Endpoint:** `POST /api/login`
-- **Description:** Authenticates a user. Returns a short-lived JWT access token in the JSON response and a long-lived opaque refresh token via an `HttpOnly` secure cookie.
+- **Description:** Authenticates a user and enforces a single active session (revoking previous sessions). Returns a short-lived JWT access token in the JSON response and a long-lived opaque refresh token via an `HttpOnly` secure cookie.
 - **Headers:**
   - `Content-Type: application/json`
 - **Body:**
@@ -132,6 +132,7 @@ http://localhost/JWT Auth/public/index.php
         "gender": "Female",
         "phone": "555-1234",
         "address": "123 Main St",
+        "diagnosis": "Hypertension",
         "created_at": "2024-05-23 10:00:00",
         "updated_at": "2024-05-23 10:00:00"
       }
@@ -154,6 +155,7 @@ http://localhost/JWT Auth/public/index.php
       "gender": "Female",
       "phone": "555-1234",
       "address": "123 Main St",
+      "diagnosis": "Hypertension",
       "created_at": "2024-05-23 10:00:00",
       "updated_at": "2024-05-23 10:00:00"
     }
@@ -174,7 +176,8 @@ http://localhost/JWT Auth/public/index.php
     "age": 30,
     "gender": "Female",
     "phone": "555-1234",
-    "address": "123 Main St"
+    "address": "123 Main St",
+    "diagnosis": "Hypertension"
   }
   ```
 - **Response (201 Created):**
@@ -187,6 +190,7 @@ http://localhost/JWT Auth/public/index.php
       "gender": "Female",
       "phone": "555-1234",
       "address": "123 Main St",
+      "diagnosis": "Hypertension",
       "id": 1
     }
   }
@@ -203,7 +207,8 @@ http://localhost/JWT Auth/public/index.php
   ```json
   {
     "age": 31,
-    "phone": "555-9999"
+    "phone": "555-9999",
+    "diagnosis": "Resolved"
   }
   ```
 - **Response (200 OK):**
