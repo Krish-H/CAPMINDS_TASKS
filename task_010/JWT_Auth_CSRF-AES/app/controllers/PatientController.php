@@ -48,6 +48,10 @@ class PatientController
             $data[$field] = trim($body[$field]);
         }
         
+        if (isset($body['diagnosis']) && trim($body['diagnosis']) !== '') {
+            $data['diagnosis'] = trim($body['diagnosis']);
+        }
+        
         $data['user_id'] = $userId;
 
         $patientId = $this->patientModel->create($data);
@@ -71,7 +75,7 @@ class PatientController
         }
 
         $body = $_REQUEST['body'] ?? [];
-        $allowedFields = ['name', 'age', 'gender', 'phone', 'address'];
+        $allowedFields = ['name', 'age', 'gender', 'phone', 'address', 'diagnosis'];
         $data = [];
         
         foreach ($allowedFields as $field) {
