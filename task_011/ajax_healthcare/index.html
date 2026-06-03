@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Healthcare - Appointment System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Form Section -->
+        <div class="card">
+            <h2 id="form-title">Book Appointment</h2>
+
+            <div id="alert-box" class="alert"></div>
+
+            <form id="appointment-form">
+                <input type="hidden" id="csrf_token" name="csrf_token">
+                <input type="hidden" id="appointment_id" name="id">
+
+                <div class="form-group">
+                    <label for="patient_name">Patient Name</label>
+                    <input type="text" id="patient_name" name="patient_name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="mobile">Mobile Number</label>
+                    <input type="text" id="mobile" name="mobile" required minlength="10" maxlength="15">
+                </div>
+
+                <div class="form-group">
+                    <label for="doctor_name">Select Doctor</label>
+                    <select id="doctor_name" name="doctor_name" required>
+                        <option value="">Choose...</option>
+                        <option value="Dr. Smith (Cardiology)">Dr. Smith (Cardiology)</option>
+                        <option value="Dr. Jones (Neurology)">Dr. Jones (Neurology)</option>
+                        <option value="Dr. Patel (Pediatrics)">Dr. Patel (Pediatrics)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="appointment_date">Appointment Date</label>
+                    <input type="date" id="appointment_date" name="appointment_date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="appointment_time">Time Slot (09:00 - 17:00)</label>
+                    <input type="time" id="appointment_time" name="appointment_time" required>
+                </div>
+
+                <button type="submit" id="submit-btn">Save Appointment</button>
+                <button type="button" id="cancel-btn" class="btn-cancel" onclick="resetForm()">Cancel Edit</button>
+            </form>
+        </div>
+
+        <!-- List Section -->
+        <div class="card" style="overflow-x: auto;">
+            <h2>Appointment List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Patient Info</th>
+                        <th>Doctor</th>
+                        <th>Date & Time</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="appointment-list">
+                    <!-- Data will be loaded here via AJAX -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
