@@ -1,15 +1,7 @@
-import React, { useState } from 'react';
-
-const dummyDoctors = [
-  { id: 101, name: "Dr. Alice Morgan", specialty: "Cardiology", experience: "15 years" },
-  { id: 102, name: "Dr. Brian Lee", specialty: "Neurology", experience: "12 years" },
-  { id: 103, name: "Dr. Catherine Woods", specialty: "Pediatrics", experience: "8 years" },
-  { id: 104, name: "Dr. Daniel Kim", specialty: "Orthopedics", experience: "20 years" },
-  { id: 105, name: "Dr. Evelyn Ross", specialty: "Dermatology", experience: "10 years" }
-];
+import React from 'react';
+import { doctors } from '../data/doctors';
 
 function Doctors() {
-  const [doctors] = useState(dummyDoctors);
 
   // 7. Performance Learning: Observe when Doctors component renders
   console.log('Doctors page rendered');
