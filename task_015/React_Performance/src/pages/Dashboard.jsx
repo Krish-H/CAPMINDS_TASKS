@@ -1,8 +1,7 @@
 import React, { useMemo } from 'react';
 
-// Dummy data for calculation
-const dummyPatients = new Array(14).fill(0);
-const dummyDoctors = new Array(5).fill(0);
+import { patients } from '../data/patients';
+import { doctors } from '../data/doctors';
 
 function Dashboard() {
   // 7. Performance Learning: Observe when components render
@@ -12,12 +11,12 @@ function Dashboard() {
   // In a real app, this might be a more complex computation over large arrays
   const totalPatients = useMemo(() => {
     console.log('Calculating total patients...');
-    return dummyPatients.length;
+    return patients.length;
   }, []); // Empty dependency array as dummy data doesn't change here
 
   const totalDoctors = useMemo(() => {
     console.log('Calculating total doctors...');
-    return dummyDoctors.length;
+    return doctors.length;
   }, []);
 
   return (
@@ -25,13 +24,13 @@ function Dashboard() {
       <div className="page-header">
         <h1 className="page-title">Dashboard Overview</h1>
       </div>
-      
+
       <div className="stats-grid">
         <div className="stat-card">
           <div className="stat-title">Total Patients</div>
           <div className="stat-value">{totalPatients}</div>
         </div>
-        
+
         <div className="stat-card">
           <div className="stat-title">Active Doctors</div>
           <div className="stat-value">{totalDoctors}</div>
